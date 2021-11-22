@@ -3,6 +3,22 @@
    max-width: 1000px;
 }
 
+.navbar-light {
+   background: #2980b9!important;
+}
+
+.navbar-light .navbar-nav li a.nav-link{
+   color: white;
+}
+
+.navbar-brand p{
+   color: white;
+}
+
+.navbar-light .navbar-nav>.active>.nav-link {
+   color: white;
+}
+
 /* code block highlight color in rtd changed to lime green, no no no */
 
 .rst-content tt.literal, .rst-content code.literal, .highlight {

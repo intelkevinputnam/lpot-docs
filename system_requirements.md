@@ -1,157 +1,4 @@
-Introduction to Intel® Neural Compressor 
-===========================
-
-The Intel® Neural Compressor (former name Intel® Low Precision Optimization Tool) is an open-source Python library that delivers a unified low-precision inference interface across multiple Intel-optimized Deep Learning (DL) frameworks on both CPUs and GPUs. It supports automatic accuracy-driven tuning strategies, along with additional objectives such as optimizing for performance, model size, and memory footprint. It also provides easy extension capability for new backends, tuning strategies, metrics, and objectives.
-
-<sphinx-ignore-start>
-
-* [Architecture](#architecture)
-* [Installation](#instllation)
-* [Documentation](docs/doclist.rst)
-  - [Get Started](docs/doclist.rst#get-started)
-  - [Deep Dive](docs/doclist.rst#deep-dive)
-  - [Advanced Topics](docs/doclist.rst#advanced-topics)
-  - [Publications](docs/doclist.rst#publications)
-* [System Requirements](#system-requirements)
-
-<sphinx-ignore-end>
-
-> **Note**
->
-> GPU support is under development.
-
-**Visit the Intel® Neural Compressor online document website at: <https://intel.github.io/neural-compressor/>.**
-
-## Architecture
-
-Intel® Neural Compressor features an infrastructure and workflow that aids in increasing performance and faster deployments across architectures. 
-
-
-#### Infrastructure
-
-<a target="_blank" href="docs/imgs/infrastructure.png">
-  <img src="docs/imgs/infrastructure.png" alt="Infrastructure" width=800 height=360>
-</a>
-
-Click the image to enlarge it.
-
-#### Workflow
-
-<a target="_blank" href="docs/imgs/workflow.png">
-  <img src="docs/imgs/workflow.png" alt="Workflow" width=800 height=360>
-</a>
-
-Click the image to enlarge it.
-
-#### Supported Frameworks
-
-Supported Intel-optimized DL frameworks are:
-* [TensorFlow\*](https://github.com/Intel-tensorflow/tensorflow), including [1.15.0 UP3](https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up3), [1.15.0 UP2](https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up2), [1.15.0 UP1](https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up1), [2.1.0](https://github.com/Intel-tensorflow/tensorflow/tree/v2.1.0), [2.2.0](https://github.com/Intel-tensorflow/tensorflow/tree/v2.2.0), [2.3.0](https://github.com/Intel-tensorflow/tensorflow/tree/v2.3.0), [2.4.0](https://github.com/Intel-tensorflow/tensorflow/tree/v2.4.0), [2.5.0](https://github.com/Intel-tensorflow/tensorflow/tree/v2.5.0), [Official TensorFlow 2.6.0](https://github.com/tensorflow/tensorflow/tree/v2.6.0)
-
->  **Note**: Intel Optimized TensorFlow 2.5.0 requires to set environment variable TF_ENABLE_MKL_NATIVE_FORMAT=0 before running Intel® Neural Compressor quantization or deploying the quantized model.
-
->  **Note**: From Official TensorFlow 2.6.0, oneDNN support has been upstreamed. User just need download official TensorFlow binary for CPU device and set environment variable TF_ENABLE_ONEDNN_OPTS=1 before running Intel® Neural Compressor quantization or deploying the quantized model.
-
-* [PyTorch\*](https://pytorch.org/), including [1.5.0+cpu](https://download.pytorch.org/whl/torch_stable.html), [1.6.0+cpu](https://download.pytorch.org/whl/torch_stable.html), [1.8.0+cpu](https://download.pytorch.org/whl/torch_stable.html)
-* [Apache\* MXNet](https://mxnet.apache.org), including [1.6.0](https://github.com/apache/incubator-mxnet/tree/1.6.0), [1.7.0](https://github.com/apache/incubator-mxnet/tree/1.7.0), [1.8.0](https://github.com/apache/incubator-mxnet/tree/1.8.0)
-* [ONNX\* Runtime](https://github.com/microsoft/onnxruntime), including [1.6.0](https://github.com/microsoft/onnxruntime/tree/v1.6.0), [1.7.0](https://github.com/microsoft/onnxruntime/tree/v1.7.0), [1.8.0](https://github.com/microsoft/onnxruntime/tree/v1.8.0)
-
-
-## Installation
-
-Select the installation based on your operating system.
-
-
-### Linux Installation
-
-You can install Intel® Neural Compressor using one of three options: Install just the Intel® Neural Compressor library
-from binary or source, or get the Intel-optimized framework together with the
-Intel® Neural Compressor library by installing the [Intel® oneAPI AI Analytics Toolkit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/ai-analytics-toolkit.html).
-
-#### Option 1 Install from binary
-
-  ```Shell
-  # install stable version from pip
-  pip install lpot
-
-  # install nightly version from pip
-  pip install -i https://test.pypi.org/simple/ lpot
-
-  # install stable version from from conda
-  conda install lpot -c conda-forge -c intel 
-  ```
-
-#### Option 2 Install from source
-
-  ```Shell
-  git clone https://github.com/intel/neural-compressor.git
-  cd lpot
-  pip install -r requirements.txt
-  python setup.py install
-  ```
-
-#### Option 3 Install from AI Kit
-
-The Intel® Neural Compressor library is released as part of the
-[Intel® oneAPI AI Analytics Toolkit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/ai-analytics-toolkit.html) (AI Kit).
-The AI Kit provides a consolidated package of Intel's latest deep learning and
-machine optimizations all in one place for ease of development. Along with
-Intel® Neural Compressor, the AI Kit includes Intel-optimized versions of deep learning frameworks
-(such as TensorFlow and PyTorch) and high-performing Python libraries to
-streamline end-to-end data science and AI workflows on Intel architectures.
-
-The AI Kit is distributed through many common channels,
-including from Intel's website, YUM, APT, Anaconda, and more.
-Select and [download](https://software.intel.com/content/www/us/en/develop/tools/oneapi/ai-analytics-toolkit/download.html)
-the AI Kit distribution package that's best suited for you and follow the
-[Get Started Guide](https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-ai-linux/top.html)
-for post-installation instructions.
-
-|[Download AI Kit](https://software.intel.com/content/www/us/en/develop/tools/oneapi/ai-analytics-toolkit/) |[AI Kit Get Started Guide](https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-ai-linux/top.html) |
-|---|---|
-
-### Windows Installation
-
-**Prerequisites**
-
-The following prerequisites and requirements must be satisfied for a successful installation:
-
-- Python version: 3.6 or 3.7 or 3.8 or 3.9
-
-- Download and install [anaconda](https://anaconda.org/).
-
-- Create a virtual environment named lpot in anaconda:
-
-    ```shell
-    # Here we install python 3.7 for instance. You can also choose python 3.6, 3.8, or 3.9.
-    conda create -n lpot python=3.7
-    conda activate lpot
-    ```
-**Installation options**
-
-#### Option 1 Install from binary
-
-  ```Shell
-  # install stable version from pip
-  pip install lpot
-
-  # install nightly version from pip
-  pip install -i https://test.pypi.org/simple/ lpot
-
-  # install from conda
-  conda install lpot -c conda-forge -c intel 
-  ```
-
-#### Option 2 Install from source
-
-```shell
-git clone https://github.com/intel/neural-compressor.git
-cd lpot
-pip install -r requirements.txt
-python setup.py install
-```
-
-## System Requirements
+# System Requirements
 
 Intel® Neural Compressor supports systems based on [Intel 64 architecture or compatible processors](https://en.wikipedia.org/wiki/X86-64), specially optimized for the following CPUs:
 
@@ -160,7 +7,7 @@ Intel® Neural Compressor supports systems based on [Intel 64 architecture or co
 
 Intel® Neural Compressor requires installing the pertinent Intel-optimized framework version for TensorFlow, PyTorch, MXNet, and ONNX runtime.
 
-### Validated Hardware/Software Environment
+## Validated Hardware/Software Environment
 
 <table class="docutils">
 <thead>
@@ -243,11 +90,11 @@ Intel® Neural Compressor requires installing the pertinent Intel-optimized fram
 </tbody>
 </table>
 
-### Validated Models
+## Validated Models
 
 Intel® Neural Compressor provides numerous examples to show promising accuracy loss with the best performance gain. A full quantized model list on various frameworks is available in the [Model List](docs/full_model_list.md).
 
-#### Validated MLPerf Models
+### Validated MLPerf Models
 
 <table>
 <thead>
@@ -318,7 +165,7 @@ Intel® Neural Compressor provides numerous examples to show promising accuracy 
 </tbody>
 </table>
 
-#### Validated Quantized Models
+### Validated Quantized Models
 
 <table>
 <thead>
@@ -640,7 +487,7 @@ Intel® Neural Compressor provides numerous examples to show promising accuracy 
 </tbody>
 </table>
 
-#### Validated Pruning Models
+### Validated Pruning Models
 
 <table>
 <thead>
@@ -814,11 +661,3 @@ Intel® Neural Compressor provides numerous examples to show promising accuracy 
   </tr>
 </tbody>
 </table>
-
-## Additional Content
-
-* [Release Information](releases_info.md)
-* [Contribution Guidelines](contributions.md)
-* [Legal](legal_information.md)
-* [Security Policy](security_policy.md)
-* [Intel® Neural Compressor Website](https://intel.github.io/neural-compressor/)

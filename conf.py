@@ -83,7 +83,7 @@ pygments_style = 'sphinx'
 # html_theme = "classic"
 # html_theme = "alabaster"
 # html_theme = 'sphinx_book_theme'
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'pydata_sphinx_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -168,6 +168,7 @@ def setup(app):
 
 from os import getenv
 
+sphinx_md_processRaw = True
 sphinx_md_useGitHubURL = True
 baseBranch = "master"
 commitSHA = getenv('GITHUB_SHA')
