@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Intel Intel® Neural Compressor &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="docs/doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="introduction-to-intel-intel-neural-compressor">
+<h1>Introduction to Intel Intel® Neural Compressor<a class="headerlink" href="#introduction-to-intel-intel-neural-compressor" title="Permalink to this headline">¶</a></h1>
+<p>The Intel® Neural Compressor (former name Intel® Low Precision Optimization Tool) is an open-source Python library that delivers a unified low-precision inference interface across multiple Intel-optimized Deep Learning (DL) frameworks on both CPUs and GPUs. It supports automatic accuracy-driven tuning strategies, along with additional objectives such as optimizing for performance, model size, and memory footprint. It also provides easy extension capability for new backends, tuning strategies, metrics, and objectives.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: GPU support is under development.</p>
+</div>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>Infrastructure</th>
+<th>Workflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Intel® Neural Compressor Infrastructure" src="./docs/imgs/infrastructure.png" title="Infrastructure" /></td>
+<td><img alt="Intel® Neural Compressor Workflow" src="./docs/imgs/workflow.png" title="Workflow" /></td>
+</tr>
+</tbody>
+</table><p>Supported Intel-optimized DL frameworks are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow">TensorFlow*</a>, including <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up3">1.15.0 UP3</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up2">1.15.0 UP2</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up1">1.15.0 UP1</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v2.1.0">2.1.0</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v2.2.0">2.2.0</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v2.3.0">2.3.0</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v2.4.0">2.4.0</a>, <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v2.5.0">2.5.0</a>, <a class="reference external" href="https://github.com/tensorflow/tensorflow/tree/v2.6.0">Official TensorFlow 2.6.0</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: Intel Optimized TensorFlow 2.5.0 requires to set environment variable TF_ENABLE_MKL_NATIVE_FORMAT=0 before running Intel® Neural Compressor quantization or deploying the quantized model.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: From Official TensorFlow 2.6.0, oneDNN support has been upstreamed. User just need download official TensorFlow binary for CPU device and set environment variable TF_ENABLE_ONEDNN_OPTS=1 before running Intel® Neural Compressor quantization or deploying the quantized model.</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pytorch.org/">PyTorch*</a>, including <a class="reference external" href="https://download.pytorch.org/whl/torch_stable.html">1.5.0+cpu</a>, <a class="reference external" href="https://download.pytorch.org/whl/torch_stable.html">1.6.0+cpu</a>, <a class="reference external" href="https://download.pytorch.org/whl/torch_stable.html">1.8.0+cpu</a></p></li>
+<li><p><a class="reference external" href="https://mxnet.apache.org">Apache* MXNet</a>, including <a class="reference external" href="https://github.com/apache/incubator-mxnet/tree/1.6.0">1.6.0</a>, <a class="reference external" href="https://github.com/apache/incubator-mxnet/tree/1.7.0">1.7.0</a>, <a class="reference external" href="https://github.com/apache/incubator-mxnet/tree/1.8.0">1.8.0</a></p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/onnxruntime">ONNX* Runtime</a>, including <a class="reference external" href="https://github.com/microsoft/onnxruntime/tree/v1.6.0">1.6.0</a>, <a class="reference external" href="https://github.com/microsoft/onnxruntime/tree/v1.7.0">1.7.0</a>, <a class="reference external" href="https://github.com/microsoft/onnxruntime/tree/v1.8.0">1.8.0</a></p></li>
+</ul>
+<p><a class="reference internal" href="getting_started.html"><span class="doc">Get started</span></a> with installation, tutorials, examples, and more!</p>
+<p>View the Intel® Neural Compressor repo at: <a class="reference external" href="https://github.com/intel/neural-compressor">https://github.com/intel/neural-compressor</a>.</p>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

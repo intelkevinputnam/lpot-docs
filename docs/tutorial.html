@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage-examples">
+   Usage Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#helloworld-examples">
+   Helloworld Examples
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial provides instructions (with examples) on how to integrate models with Intel® Low Precision Optimization Tool (LPOT).</p>
+<p>The following diagram shows steps for enabling model with LPOT:</p>
+<p><img alt="Tutorial" src="../_images/tutorial.png" /></p>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<p>To write launcher code, a user needs to prepare four components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Dataloader/Dataset</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Model</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Postprocess</span></code>      <span style="color:red"><em>optional</em></span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Metric</span></code></p></li>
+</ul>
+<p>LPOT constructs the whole quantization/pruning process using these four components.</p>
+<p>LPOT has added built-in support for popular dataloaders/datasets and metrics to ease the preparation. Refer to <a class="reference internal" href="dataset.html"><span class="doc">dataset</span></a> and <a class="reference internal" href="metric.html"><span class="doc">metric</span></a> to learn how to use them in yaml.</p>
+<p>LPOT also supports registering custom datasets and custom metrics by code.</p>
+<p>As for model, LPOT abstract a common API, named <a class="reference external" href="https://github.com/intel/lpot/blob/master/docs/../lpot/experimental/common/model.py">lpot.experimental.common.Model</a>, to cover the case in which model, weight, and other necessary info are separately stored. Refer to <a class="reference internal" href="model.html"><span class="doc">model</span></a> to learn how to use it.</p>
+<p>Postprocess is treated as a special transform by LPOT which is only needed when a model output is mismatching with the expected input of LPOT built-in metrics. If a user is using a custom metric, the postprocess is not needed as the custom metric implementation needed ensures it can handle the model output correctly. On the other hand, the postprocess logic becomes part of the custom metric implementation.</p>
+<p>The example below shows how to enable LPOT on TensorFlow mobilenet_v1 with a built-in dataloader, dataset, and metric.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># main.py</span>
+<span class="kn">from</span> <span class="nn">lpot.experimental</span> <span class="kn">import</span> <span class="n">Quantization</span><span class="p">,</span> <span class="n">common</span>
+<span class="n">quantizer</span> <span class="o">=</span> <span class="n">Quantization</span><span class="p">(</span><span class="s1">&#39;./conf.yaml&#39;</span><span class="p">)</span>
+<span class="n">quantizer</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;./mobilenet_v1_1.0_224_frozen.pb&quot;</span><span class="p">)</span>
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">quantizer</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.yaml</span>
+<span class="nt">model</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mobilenet_v1</span> 
+  <span class="nt">framework</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tensorflow</span>
+<span class="nt">quantization</span><span class="p">:</span>
+  <span class="nt">calibration</span><span class="p">:</span>
+    <span class="nt">sampling_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">dataloader</span><span class="p">:</span>
+      <span class="nt">batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="nt">dataset</span><span class="p">:</span>
+        <span class="nt">ImageRecord</span><span class="p">:</span>
+          <span class="nt">root</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/imagenet/</span>
+      <span class="nt">transform</span><span class="p">:</span>
+        <span class="nt">ParseDecodeImagenet</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+        <span class="nt">BilinearImagenet</span><span class="p">:</span> 
+          <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+          <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+<span class="nt">evaluation</span><span class="p">:</span>
+  <span class="nt">accuracy</span><span class="p">:</span>
+    <span class="nt">metric</span><span class="p">:</span>
+      <span class="nt">topk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">dataloader</span><span class="p">:</span>
+      <span class="nt">batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32</span> 
+      <span class="nt">dataset</span><span class="p">:</span>
+        <span class="nt">ImageRecord</span><span class="p">:</span>
+          <span class="nt">root</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/imagenet/</span>
+      <span class="nt">transform</span><span class="p">:</span>
+        <span class="nt">ParseDecodeImagenet</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+        <span class="nt">BilinearImagenet</span><span class="p">:</span> 
+          <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+          <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+</pre></div>
+</div>
+<p>In this example, we use an LPOT built-in <code class="docutils literal notranslate"><span class="pre">ImageRecord</span></code> dataset and a <code class="docutils literal notranslate"><span class="pre">topk</span></code> metric.</p>
+<p>If the user wants to use a dataset or metric that is not supported by the LPOT built-in, the user can register a custom one as demonstrated in the below helloworld example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># main.py</span>
+<span class="kn">from</span> <span class="nn">lpot.experimental</span> <span class="kn">import</span> <span class="n">Quantization</span><span class="p">,</span> <span class="n">common</span>
+
+<span class="k">class</span> <span class="nc">Dataset</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span>
+                 <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">fashion_mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">test_labels</span>
+  <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_images</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_images</span><span class="p">)</span>
+
+<span class="c1"># Define a customized Metric function </span>
+<span class="k">class</span> <span class="nc">MyMetric</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pred_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">label_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pred_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predict</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">label_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pred_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">label_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">samples</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">def</span> <span class="nf">result</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="n">correct_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label_list</span><span class="p">))</span>
+      <span class="k">return</span> <span class="n">correct_num</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span>
+
+<span class="c1"># Quantize with customized dataloader and metric</span>
+<span class="n">quantizer</span> <span class="o">=</span> <span class="n">Quantization</span><span class="p">(</span><span class="s1">&#39;./conf.yaml&#39;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">()</span>
+<span class="n">quantizer</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Metric</span><span class="p">(</span><span class="n">MyMetric</span><span class="p">)</span>
+<span class="n">quantizer</span><span class="o">.</span><span class="n">calib_dataloader</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">quantizer</span><span class="o">.</span><span class="n">eval_dataloader</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">quantizer</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s1">&#39;../models/simple_model&#39;</span><span class="p">)</span>
+<span class="n">q_model</span> <span class="o">=</span> <span class="n">quantizer</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p></p>
+<p>In the customized dataset, the <code class="docutils literal notranslate"><span class="pre">__getitem__()</span></code> interface must be implemented and return a single sample and label. In this example, it returns the (image, label) pair. The user can return (image, 0) for a label-free case.</p>
+</div>
+<p>In the customized metric, the update() function records the predicted result of each mini-batch. The result() function is invoked by LPOT at the end of the evaluation to return a scalar to reflect model accuracy. By default, this scalar is higher-is-better. If this scalar returned from the customized metric is a lower-is-better value, <code class="docutils literal notranslate"><span class="pre">tuning.accuracy_criterion.higher_is_better</span></code> in yaml should be set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># conf.yaml</span>
+<span class="nt">model</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world</span>
+  <span class="nt">framework</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tensorflow</span>
+  <span class="nt">inputs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">input</span>
+  <span class="nt">outputs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">output</span>
+
+<span class="nt">tuning</span><span class="p">:</span>
+  <span class="nt">accuracy_criterion</span><span class="p">:</span>
+    <span class="nt">relative</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+  <span class="nt">exit_policy</span><span class="p">:</span>
+    <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+  <span class="nt">random_seed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+</pre></div>
+</div>
+</section>
+<section id="helloworld-examples">
+<h2>Helloworld Examples<a class="headerlink" href="#helloworld-examples" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Built-in dataloader and metric example: see <a class="reference external" href="https://github.com/intel/lpot/tree/master/examples/helloworld/tf_example1">tf_example1</a> for more details.</p></li>
+<li><p>TensorFlow checkpoint: see <a class="reference external" href="https://github.com/intel/lpot/tree/master/examples/helloworld/tf_example4">tf_example4</a> for more details.</p></li>
+<li><p>Enable benchmark for performance and accuracy measurement: see <a class="reference external" href="https://github.com/intel/lpot/tree/master/examples/helloworld/tf_example5">tf_example5</a> for more details.</p></li>
+<li><p>TensorFlow slim model: see <a class="reference external" href="https://github.com/intel/lpot/tree/master/examples/helloworld/tf_example3">tf_example3</a> for more details.</p></li>
+</ol>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

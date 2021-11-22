@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TensorBoard &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Adaptor" href="adaptor.html" />
+    <link rel="prev" title="Model Conversion" href="model_conversion.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pytorch-tensorboard">
+   PyTorch TensorBoard
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#design">
+     Design
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#usage">
+     Usage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tensorflow-tensorboard">
+   TensorFlow Tensorboard
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Design
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Usage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="tensorboard">
+<h1>TensorBoard<a class="headerlink" href="#tensorboard" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>TensorBoard is a suite of web applications that provide measurements and visualizations used to inspect and understand your machine learning workflow for <a class="reference external" href="https://github.com/tensorflow/tensorboard">TensorFlow TensorBoard</a> and <a class="reference external" href="https://github.com/pytorch/pytorch/tree/master/torch/utils/tensorboard">PyTorch TensorBoard</a>. Intel® Low Precision Optimization Tool performs accuracy-driven quantization; the tuning process quantizes the tensor and performs graph transformation and optimization to achieve optimal performance under accuracy requirement. If you want to observe the behaviors of the optimizations, or if you want to discover why an accuracy target cannot be met, TensorBoard can provide you with some valuable information. You can inspect the graph and tensor after each tuning run. If a model cannot meet accuracy requirements, you can analyze the comparison of FP32 and the INT8 tensor histogram.</p>
+<p>We collect the TensorBoard event summary during evaluation. The first time is on the baseline FP32 model and later on at the end of each tuning runs are based on the quantized model. The TensorBoard log directory is named baseline_acc_<accuracy> and tune_<runs><em>acc</em><accuracy>, to indicate the stage and accuracy of the data that is generated. Users can select their data of interest to observe with TensorBoard.</p>
+</section>
+<section id="pytorch-tensorboard">
+<h2>PyTorch TensorBoard<a class="headerlink" href="#pytorch-tensorboard" title="Permalink to this headline">¶</a></h2>
+<section id="design">
+<h3>Design<a class="headerlink" href="#design" title="Permalink to this headline">¶</a></h3>
+<p>PyTorch TensorBoard implementation includes three steps:</p>
+<ul class="simple">
+<li><p>Before evaluation in the _pre_eval_hook() where instruments observers are placed in the model.</p></li>
+<li><p>During evaluation where observers collect tensor information in a dict data structure.</p></li>
+<li><p>After evaluation where the graph and tensor information is dumped with the TensorBoard summary writer in _post_eval_hook().</p></li>
+</ul>
+<p>The detailed algorithm can be described by the Pseudo code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">postprocess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> \
+                 <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">measurer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iteration</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">tensorboard</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="c1"># The tensorboard summary is collected in the evaluation function of adaptor</span>
+
+    <span class="k">if</span> <span class="n">tensorboard</span><span class="p">:</span>
+         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pre_eval_hook</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> 
+    <span class="c1">#evaluation code</span>
+    <span class="o">....</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>     
+    <span class="k">if</span> <span class="n">tensorboard</span><span class="p">:</span> 
+         <span class="bp">self</span><span class="o">.</span><span class="n">_post_eval_hook</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">accuracy</span><span class="o">=</span><span class="n">acc</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="nb">input</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">_pre_eval_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="c1"># Insert observer submodule into each module in whitelist in order to collect tensor information</span>
+
+   <span class="k">class</span> <span class="nc">_RecordingObserver</span><span class="p">(</span><span class="n">ABC</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+   <span class="c1"># Define the Observer class </span>
+
+        <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Record the tensor information in a dict structure</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_tensors_dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_iter</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span> 
+
+        <span class="nd">@torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">export</span>
+        <span class="k">def</span> <span class="nf">get_tensor_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_tensors_dict</span>
+
+   <span class="k">def</span> <span class="nf">_observer_forward_hook</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="c1">#Forward hook that calls observer on the output</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">activation_post_process</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+   <span class="k">def</span> <span class="nf">_add_observer_</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">op_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span> 
+
+        <span class="c1">#Add observer for each child module</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
+            <span class="n">_add_observer_</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">op_list</span><span class="p">,</span> <span class="n">op_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">leaf</span><span class="p">:</span>
+           <span class="n">module</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span>
+                    <span class="s1">&#39;activation_post_process&#39;</span><span class="p">,</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">qconfig</span><span class="o">.</span><span class="n">activation</span><span class="p">())</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">register_forward_hook</span><span class="p">(</span><span class="n">_observer_forward_hook</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_post_eval_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+   <span class="c1"># Dump tensor and graph information with TensorBoard summary writer</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dump_times</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+       <span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="s1">&#39;runs/eval/baseline&#39;</span> <span class="o">+</span>
+                             <span class="s1">&#39;_acc&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">accuracy</span><span class="p">),</span> <span class="n">model</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="s1">&#39;runs/eval/tune_&#39;</span> <span class="o">+</span>
+                                  <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dump_times</span><span class="p">)</span> <span class="o">+</span>
+                                  <span class="s1">&#39;_acc&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">accuracy</span><span class="p">),</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">&#39;input&#39;</span> <span class="ow">in</span> <span class="n">args</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">dump_times</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+       <span class="n">writer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;input&#39;</span><span class="p">])</span>
+
+    <span class="kn">from</span> <span class="nn">torch.quantization</span> <span class="kn">import</span> <span class="n">get_observer_dict</span>
+    <span class="n">get_observer_dict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">observer_dict</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">observer_dict</span><span class="p">:</span>
+        <span class="o">......</span>
+        <span class="n">op_name</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;.activation_post_process&quot;</span><span class="p">)</span>
+        <span class="n">summary</span><span class="p">[</span><span class="n">op_name</span> <span class="o">+</span> <span class="s2">&quot;.output&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">observer_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">get_tensor_value</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">[</span><span class="n">op_name</span> <span class="o">+</span> <span class="s2">&quot;.output&quot;</span><span class="p">]:</span>
+            <span class="c1">#Record output tensor, for fused op only record the parent op output </span>
+            <span class="o">......</span>
+            <span class="k">if</span> <span class="n">summary</span><span class="p">[</span><span class="n">op_name</span> <span class="o">+</span> <span class="s2">&quot;.output&quot;</span><span class="p">][</span><span class="nb">iter</span><span class="p">]</span><span class="o">.</span><span class="n">is_quantized</span><span class="p">:</span>
+                  <span class="n">writer</span><span class="o">.</span><span class="n">add_histogram</span><span class="p">(</span>
+                        <span class="n">op</span> <span class="o">+</span> <span class="s2">&quot;/Output/int8&quot;</span><span class="p">,</span>
+                        <span class="n">torch</span><span class="o">.</span><span class="n">dequantize</span><span class="p">(</span><span class="n">summary</span><span class="p">[</span><span class="n">op_name</span> <span class="o">+</span>
+                                                 <span class="s2">&quot;.output&quot;</span><span class="p">][</span><span class="nb">iter</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                  <span class="n">writer</span><span class="o">.</span><span class="n">add_histogram</span><span class="p">(</span>
+                        <span class="n">op</span> <span class="o">+</span> <span class="s2">&quot;/Output/fp32&quot;</span><span class="p">,</span>
+                        <span class="n">summary</span><span class="p">[</span><span class="n">op_name</span> <span class="o">+</span> <span class="s2">&quot;.output&quot;</span><span class="p">][</span><span class="nb">iter</span><span class="p">])</span>
+
+        <span class="n">state_dict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">state_dict</span><span class="p">:</span>
+            <span class="c1"># Record weight tensor, fused child tensorBoard tag will be merge </span>
+            <span class="k">if</span> <span class="n">state_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">is_quantized</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">add_histogram</span><span class="p">(</span><span class="n">op</span> <span class="o">+</span> <span class="s2">&quot;/int8&quot;</span><span class="p">,</span>
+                                     <span class="n">torch</span><span class="o">.</span><span class="n">dequantize</span><span class="p">(</span><span class="n">state_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">add_histogram</span><span class="p">(</span><span class="n">op</span> <span class="o">+</span> <span class="s2">&quot;/fp32&quot;</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+      
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Add “tensorboard: true” in the yaml file.</p></li>
+<li><p>Run quantization tuning; a “./runs” folder is generated in the working folder.</p></li>
+<li><p>Start tensorboard:</p>
+<p><code class="docutils literal notranslate"><span class="pre">shell</span> <span class="pre">tensorboard</span> <span class="pre">--bind_all</span> <span class="pre">--logdir_spec</span> <span class="pre">baseline:./runs/eval/tune_0_acc0.80,tune_1:././runs/eval/tune_1_acc0.79</span>&#160;&#160; </code></p>
+</li>
+</ol>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>  examples/pytorch/eager/image_recognition/imagenet/cpu/ptq/run_tuning_dump_tensor.sh 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tensorflow-tensorboard">
+<h2>TensorFlow Tensorboard<a class="headerlink" href="#tensorflow-tensorboard" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>Design<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>TensorFlow TensorBoard implementation includes four steps:</p>
+<ol class="simple">
+<li><p>Before evaluation where we create the TensorBoard summary write and write graph, collect FP32 and node names for inspection, and dump the histogram of weights and bias tensor directly from graph_def.</p></li>
+<li><p>Run get_tensor_by_name_with_import() where we get data output tensors.</p></li>
+<li><p>Run session.run() to predict and get the inference result of the output tensor list collected in the previous step.</p></li>
+<li><p>Enumerate the output tensor and write the histogram.</p></li>
+</ol>
+<p>See the <a class="reference external" href="https://github.com/intel/lpot/tree/master/lpot/adaptor/tensorflow.py">tensorflow.py</a> evaluate() function for details.</p>
+</section>
+<section id="id2">
+<h3>Usage<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Add “tensorboard: true” in the yaml file.</p></li>
+<li><p>Run quantization tuning; a “./runs” folder is generated in the working folder. For example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ls ./runs/eval  
+baseline_acc_0.776  tune_1_acc_0.095 
+</pre></div>
+</div>
+<p>The baseline_acc_0.776 folder contains the FP32 event log and 0.776 is the FP32 accuracy. tune_1_acc_0.095 contains the evaluation event log of the first run of tuning.</p>
+</li>
+<li><p>Start tensorboard:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tensorboard --bind_all --logdir_spec baseline:./runs_v3/eval/baseline_acc_0.776/,tune_1:./runs_v3/eval/tune_1_acc_0.095/ 
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id3">
+<h3>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Add “tensorboard: true” into examples/tensorflow/image_recognition/inceptionv3.yaml. In order to demonstrate the usage of TensorBoard, remove the following lines which are added to skip the quantization of ‘v0/cg/conv0/conv2d/Conv2D’ to avoid a known limitation.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>   <span class="nt">op_wise</span><span class="p">:</span> <span class="p p-Indicator">{</span>
+            <span class="s">&#39;v0/cg/conv0/conv2d/Conv2D&#39;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+              <span class="s">&#39;activation&#39;</span><span class="p p-Indicator">:</span>  <span class="p p-Indicator">{</span><span class="s">&#39;dtype&#39;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;fp32&#39;</span><span class="p p-Indicator">]},</span>
+            <span class="p p-Indicator">}</span>
+          <span class="p p-Indicator">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run tuning:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bash run_tuning.sh --topology<span class="o">=</span>inception_v3 --dataset_location<span class="o">=</span>&lt;imagenet&gt; <span class="se">\</span>
+         --input_model<span class="o">=</span>./inceptionv3_fp32_pretrained_model.pb --output_model<span class="o">=</span>./lpot_inceptionv3.pb  --config<span class="o">=</span>./inceptionv3_dump_tensor.yaml 
+</pre></div>
+</div>
+</li>
+<li><p>Start TensorBoard</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tensorboard --bind_all --logdir_spec baseline:./runs_v3/eval/baseline_acc_0.776/,tune_1:./runs_v3/eval/tune_1_acc_0.095/
+</pre></div>
+</div>
+</li>
+<li><p>In order to find the reason why tune_1 got such poor accuracy, we can observe the TensorBoard.</p></li>
+</ol>
+<ul class="simple">
+<li><p>From the <strong>GRAPHS</strong> tab, select “baseline/.” in the “Run” box and find the first ‘Conv2d’ op after ‘input’ op. The op name is “v0/cg/conv0/Relu”:</p></li>
+</ul>
+<p><img alt="TensorBoard Baseline" src="../_images/tensorboard_baseline_v0_cg_conv0.png" /></p>
+<ul class="simple">
+<li><p>From the <strong>GRAPHS</strong> tab, select “tune_1/.” in the “Run” box and find the first ‘Conv2d’ op after ‘input’ op. The tensor name is ‘v0/cg/conv0/conv2d/Conv2D_eightbit_requantize’:</p></li>
+</ul>
+<p><img alt="TensorBoard Tuning" src="../_images/tensorboard_tune_1_v0_cg_conv0.png" /></p>
+<ul class="simple">
+<li><p>Switch to the <strong>HISTOGRAMS</strong> tab. Click the ‘v0/cg/conv0’ op name in the search box. TensorBoard groups the tensors with the same op name together so you can compare the tensor of baseline ‘v0/cg/conv0/Relu’ with the tensor of tune_1 ‘v0/cg/conv0/conv2d/Conv2D_eightbit_requantize_int8.output’. Note that the tensor name can be changed after quantization, so group the tensor by op name and compare. From the chart below, we can see that the histogram of the first conv2d output tensor are different. This is due to a known TensorFlow issue. After filtering the ‘v0/cg/conv0/conv2d/Conv2D’ op by adding “op_wise” in the yaml file, the issue disappears.</p></li>
+</ul>
+<p><img alt="TensorBoard Histogram" src="../_images/tensorboard_v0_cg_conv0_histogram.png" /></p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="model_conversion.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Model Conversion</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="adaptor.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Adaptor</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

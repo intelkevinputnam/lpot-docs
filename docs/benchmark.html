@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Benchmarking &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mixed Precision" href="mixed_precision.html" />
+    <link rel="prev" title="Pruning" href="pruning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../system_requirements.html">
+   System Requirements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transform.html">
+   Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataset.html">
+   Dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metric.html">
+   Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ux.html">
+   LPOT UX
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Quantization.html">
+   Quantization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PTQ.html">
+   PTQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="QAT.html">
+   QAT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dynamic_quantization.html">
+   Dynamic Quantization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pruning.html">
+   Pruning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixed_precision.html">
+   Mixed Precision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_optimization.html">
+   Graph Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_conversion.html">
+   Model Conversion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorboard.html">
+   TensorBoard
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaptor.html">
+   Adaptor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tuning_strategies.html">
+   Tuning Strategies
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#config-evaluation-filed-in-a-yaml-file">
+   Config evaluation filed in a yaml file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-a-user-specific-dataloader-to-run-benchmark">
+   Use a user-specific dataloader to run benchmark
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="benchmarking">
+<h1>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this headline">¶</a></h1>
+<p>The benchmarking feature of LPOT is used to measure the model performance with the objective settings; the user can get the performance of the models between the float32 model and the quantized low precision model in the same scenarios that they configured in Yaml. Benchmarking is always used after a quantization process.</p>
+<p>The following examples show how to use benchmarking.</p>
+<section id="config-evaluation-filed-in-a-yaml-file">
+<h2>Config evaluation filed in a yaml file<a class="headerlink" href="#config-evaluation-filed-in-a-yaml-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">evaluation</span><span class="p">:</span>                                          <span class="c1"># optional. required if user doesn&#39;t provide eval_func in lpot.Quantization.</span>
+  <span class="nt">accuracy</span><span class="p">:</span>                                          <span class="c1"># optional. required if user doesn&#39;t provide eval_func in lpot.Quantization.</span>
+    <span class="nt">metric</span><span class="p">:</span>
+      <span class="nt">topk</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>                                        <span class="c1"># built-in metrics are topk, map, f1, allow user to register new metric.</span>
+    <span class="nt">dataloader</span><span class="p">:</span>
+      <span class="nt">batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+      <span class="nt">dataset</span><span class="p">:</span>
+        <span class="nt">ImageFolder</span><span class="p">:</span>
+          <span class="nt">root</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/evaluation/dataset</span>          <span class="c1"># NOTE: modify to evaluation dataset location if needed</span>
+      <span class="nt">transform</span><span class="p">:</span>
+        <span class="nt">Resize</span><span class="p">:</span>
+          <span class="nt">size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">256</span>
+        <span class="nt">CenterCrop</span><span class="p">:</span>
+          <span class="nt">size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+        <span class="nt">ToTensor</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+        <span class="nt">Normalize</span><span class="p">:</span>
+          <span class="nt">mean</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.485</span><span class="p p-Indicator">,</span> <span class="nv">0.456</span><span class="p p-Indicator">,</span> <span class="nv">0.406</span><span class="p p-Indicator">]</span>
+          <span class="nt">std</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.229</span><span class="p p-Indicator">,</span> <span class="nv">0.224</span><span class="p p-Indicator">,</span> <span class="nv">0.225</span><span class="p p-Indicator">]</span>
+  <span class="nt">performance</span><span class="p">:</span>                                       <span class="c1"># optional. used to benchmark performance of passing model.</span>
+    <span class="nt">configs</span><span class="p">:</span>
+      <span class="nt">cores_per_instance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+      <span class="nt">num_of_instance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span>
+    <span class="nt">dataloader</span><span class="p">:</span>
+      <span class="nt">batch_size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="nt">dataset</span><span class="p">:</span>
+        <span class="nt">ImageFolder</span><span class="p">:</span>
+          <span class="nt">root</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/path/to/evaluation/dataset</span>          <span class="c1"># NOTE: modify to evaluation dataset location if needed</span>
+      <span class="nt">transform</span><span class="p">:</span>
+        <span class="nt">Resize</span><span class="p">:</span>
+          <span class="nt">size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">256</span>
+        <span class="nt">CenterCrop</span><span class="p">:</span>
+          <span class="nt">size</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">224</span>
+        <span class="nt">ToTensor</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
+        <span class="nt">Normalize</span><span class="p">:</span>
+          <span class="nt">mean</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.485</span><span class="p p-Indicator">,</span> <span class="nv">0.456</span><span class="p p-Indicator">,</span> <span class="nv">0.406</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+<p>The above example config two sub-fields named ‘accuracy’ and ‘performance’ which indicates that the benchmark module will get the accuracy and performance of the model. The user can also remove the performance field to only get model accuracy or performance. It’s flexible enough to configure the benchmark you want.</p>
+</section>
+<section id="use-a-user-specific-dataloader-to-run-benchmark">
+<h2>Use a user-specific dataloader to run benchmark<a class="headerlink" href="#use-a-user-specific-dataloader-to-run-benchmark" title="Permalink to this headline">¶</a></h2>
+<p>In this case, configure your dataloader and LPOT will construct an evaluation function to run the benchmarking. The user can also register the postprocess transform and metric to get the accuracy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">()</span> <span class="c1">#  dataset class that implement __getitem__ method or __iter__ method</span>
+<span class="kn">from</span> <span class="nn">lpot.experimental</span> <span class="kn">import</span> <span class="n">Benchmark</span><span class="p">,</span> <span class="n">common</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">yaml</span><span class="p">)</span>
+<span class="n">evaluator</span><span class="o">.</span><span class="n">dataloader</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1"># user can also register postprocess and metric, this is optional</span>
+<span class="n">evaluator</span><span class="o">.</span><span class="n">postprocess</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Postprocess</span><span class="p">(</span><span class="n">postprocess_cls</span><span class="p">)</span>
+<span class="n">evaluator</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">Metric</span><span class="p">(</span><span class="n">metric_cls</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">evaluator</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Refer to the <a class="reference external" href="https://github.com/intel/lpot/blob/master/docs/../examples/tensorflow/image_recognition/run_benchmark.sh">Benchmark example</a>.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="pruning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Pruning</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mixed_precision.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mixed Precision</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

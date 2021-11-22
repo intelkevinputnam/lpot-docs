@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Mixed Precision &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Graph Optimization" href="graph_optimization.html" />
+    <link rel="prev" title="Benchmarking" href="benchmark.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../system_requirements.html">
+   System Requirements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transform.html">
+   Transform
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataset.html">
+   Dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="metric.html">
+   Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ux.html">
+   LPOT UX
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Quantization.html">
+   Quantization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PTQ.html">
+   PTQ
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="QAT.html">
+   QAT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dynamic_quantization.html">
+   Dynamic Quantization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pruning.html">
+   Pruning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="benchmark.html">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Mixed Precision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_optimization.html">
+   Graph Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_conversion.html">
+   Model Conversion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tensorboard.html">
+   TensorBoard
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="adaptor.html">
+   Adaptor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tuning_strategies.html">
+   Tuning Strategies
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bf16-convert">
+   BF16 Convert
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bf16-convert-transformation-in-tensorflow">
+   BF16 Convert Transformation in TensorFlow
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#three-steps">
+     Three steps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-bf16-convert">
+   Using BF16 Convert
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="mixed-precision">
+<h1>Mixed Precision<a class="headerlink" href="#mixed-precision" title="Permalink to this headline">¶</a></h1>
+<section id="bf16-convert">
+<h2>BF16 Convert<a class="headerlink" href="#bf16-convert" title="Permalink to this headline">¶</a></h2>
+<p>The recent growth of Deep Learning has driven the development of more complex models that require significantly more compute and memory capabilities. Several low precision numeric formats have been proposed to address the problem. Google’s <a class="reference external" href="https://cloud.google.com/tpu/docs/bfloat16">bfloat16</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Half-precision_floating-point_format">FP16: IEEE</a> half-precision format are two of the most widely used sixteen bit formats. <a class="reference external" href="https://arxiv.org/abs/1710.03740">Mixed precision</a> training and inference using low precision formats have been developed to reduce compute and bandwidth requirements.</p>
+<p>The recently launched 3rd Gen Intel® Xeon® Scalable processor (codenamed Cooper Lake), featuring Intel® Deep Learning Boost, is the first general-purpose x86 CPU to support the bfloat16 format. Specifically, three new bfloat16 instructions are added as a part of the AVX512_BF16 extension within Intel Deep Learning Boost: VCVTNE2PS2BF16, VCVTNEPS2BF16, and VDPBF16PS. The first two instructions allow converting to and from bfloat16 data type, while the last one performs a dot product of bfloat16 pairs. Further details can be found in the <a class="reference external" href="https://software.intel.com/content/www/us/en/develop/download/bfloat16-hardware-numerics-definition.html">hardware numerics document</a> published by Intel.</p>
+<p>Intel has worked with the TensorFlow development team to enhance TensorFlow to include bfloat16 data support for CPUs. For more information about BF16 in TensorFlow, please read <a class="reference external" href="https://blog.tensorflow.org/2020/06/accelerating-ai-performance-on-3rd-gen-processors-with-tensorflow-bfloat16.html">Accelerating AI performance on 3rd Gen Intel® Xeon® Scalable processors with TensorFlow and Bfloat16</a>.</p>
+<p>Intel® Low Precision Optimization Tool can support op-wise BF16 precision for TensorFlow now. With BF16 support, it can get a mixed precision model with acceptable accuracy and performance or others objective goals. This document will give a simple introduction of TensorFlow BF16 convert transformation and how to use the BF16.</p>
+</section>
+<section id="bf16-convert-transformation-in-tensorflow">
+<h2>BF16 Convert Transformation in TensorFlow<a class="headerlink" href="#bf16-convert-transformation-in-tensorflow" title="Permalink to this headline">¶</a></h2>
+<p><img alt="Mixed Precision" src="../_images/bf16_convert_tf.png" /></p>
+<section id="three-steps">
+<h3>Three steps<a class="headerlink" href="#three-steps" title="Permalink to this headline">¶</a></h3>
+<ol>
+<li><p>Convert to a <code class="docutils literal notranslate"><span class="pre">FP32</span> <span class="pre">+</span> <span class="pre">INT8</span></code> mixed precision Graph</p>
+<p>In this steps, TF adaptor will regard all fallback datatype as <code class="docutils literal notranslate"><span class="pre">FP32</span></code>. According to the per op datatype in tuning config passed by strategy, TF adaptor will generate a <code class="docutils literal notranslate"><span class="pre">FP32</span> <span class="pre">+</span> <span class="pre">INT8</span></code> mixed precision graph.</p>
+</li>
+<li><p>Convert to a <code class="docutils literal notranslate"><span class="pre">BF16</span> <span class="pre">+</span> <span class="pre">FP32</span> <span class="pre">+</span> <span class="pre">INT8</span></code> mixed precision Graph</p>
+<p>In this phase, adaptor will convert some <code class="docutils literal notranslate"><span class="pre">FP32</span></code> ops to <code class="docutils literal notranslate"><span class="pre">BF16</span></code> according to <code class="docutils literal notranslate"><span class="pre">bf16_ops</span></code> list in tuning config.</p>
+</li>
+<li><p>Optimize the <code class="docutils literal notranslate"><span class="pre">BF16</span> <span class="pre">+</span> <span class="pre">FP32</span> <span class="pre">+</span> <span class="pre">INT8</span></code> mixed precision Graph</p>
+<p>After the mixed precision graph generated, there are still some optimization need to be applied to improved the performance, for example <code class="docutils literal notranslate"><span class="pre">Cast</span> <span class="pre">+</span> <span class="pre">Cast</span></code> and so on. The <code class="docutils literal notranslate"><span class="pre">BF16Convert</span></code> transformer also apply a depth-first method to make it possible to take the ops use <code class="docutils literal notranslate"><span class="pre">BF16</span></code> which can support <code class="docutils literal notranslate"><span class="pre">BF16</span></code> datatype to reduce the insertion of <code class="docutils literal notranslate"><span class="pre">Cast</span></code> op.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="using-bf16-convert">
+<h2>Using BF16 Convert<a class="headerlink" href="#using-bf16-convert" title="Permalink to this headline">¶</a></h2>
+<p>BF16 support has enabled in <code class="docutils literal notranslate"><span class="pre">intel-tensorflow</span></code> <a class="reference external" href="https://pypi.org/project/intel-tensorflow/2.3.0/"><code class="docutils literal notranslate"><span class="pre">2.3.0</span></code></a>/<a class="reference external" href="https://pypi.org/project/intel-tensorflow/2.4.0/"><code class="docutils literal notranslate"><span class="pre">2.4.0</span></code></a>/<a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up1"><code class="docutils literal notranslate"><span class="pre">1.15.0up1</span></code></a>/<a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up2"><code class="docutils literal notranslate"><span class="pre">1.15.0up2</span></code></a> and <code class="docutils literal notranslate"><span class="pre">intel-tensorflow-avx512</span></code> <a class="reference external" href="https://pypi.org/project/intel-tensorflow-avx512/2.3.0/"><code class="docutils literal notranslate"><span class="pre">2.3.0</span></code></a>/<a class="reference external" href="https://pypi.org/project/intel-tensorflow-avx512/2.4.0/"><code class="docutils literal notranslate"><span class="pre">2.4.0</span></code></a>. On hardware side, it need the CPU support <code class="docutils literal notranslate"><span class="pre">avx512_bf16</span></code> instruction set. We also support force enable it for debug usage by using set the environment variable <code class="docutils literal notranslate"><span class="pre">FORCE_BF16=1</span></code>. But without above 2 sides support, the poor performance or other problems may expect.</p>
+<p>For now this feature will be auto enabled in the env with <code class="docutils literal notranslate"><span class="pre">intel-tensorflow</span></code> <code class="docutils literal notranslate"><span class="pre">&gt;=2.3.0</span></code> and <code class="docutils literal notranslate"><span class="pre">avx512_bf16</span></code> instruction set support platform. To get better performance with <code class="docutils literal notranslate"><span class="pre">BF16</span></code> datatype, the <code class="docutils literal notranslate"><span class="pre">intel-tensorflow-avx512</span></code> is recommended, or build intel tensorflow (take <a class="reference external" href="https://github.com/Intel-tensorflow/tensorflow/tree/v1.15.0up2">tag <code class="docutils literal notranslate"><span class="pre">v1.15.0up2</span></code></a> as example) from source code by using below command,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>bazel build --cxxopt<span class="o">=</span>-D_GLIBCXX_USE_CXX11_ABI<span class="o">=</span><span class="m">0</span> --copt<span class="o">=</span>-O3 --copt<span class="o">=</span>-Wformat --copt<span class="o">=</span>-Wformat-security <span class="se">\</span>
+        --copt<span class="o">=</span>-fstack-protector --copt<span class="o">=</span>-fPIC --copt<span class="o">=</span>-fpic --linkopt<span class="o">=</span>-znoexecstack --linkopt<span class="o">=</span>-zrelro <span class="se">\</span>
+        --linkopt<span class="o">=</span>-znow --linkopt<span class="o">=</span>-fstack-protector --config<span class="o">=</span>mkl --define <span class="nv">build_with_mkl_dnn_v1_only</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+        --copt<span class="o">=</span>-DENABLE_INTEL_MKL_BFLOAT16 --copt<span class="o">=</span>-march<span class="o">=</span>native //tensorflow/tools/pip_package:build_pip_package
+
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">BF16</span></code> has been added into activation and weight supported datatype if the tensorflow version and CPU meet the requirements. We can disable it in the yaml config file by specifying the datatype for activation and weight. For now, only the <code class="docutils literal notranslate"><span class="pre">Basic</span></code> strategy <code class="docutils literal notranslate"><span class="pre">BF16</span></code> support has been tested.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="benchmark.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Benchmarking</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="graph_optimization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Graph Optimization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

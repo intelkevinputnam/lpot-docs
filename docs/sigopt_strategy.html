@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SigOpt Strategy &#8212; Intel® Low Precision Optimization Tool  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Intel® Low Precision Optimization Tool</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Introduction
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="doclist.html">
+  Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../releases_info.html">
+  Releases
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributions.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../legal_information.html">
+  Legal
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../security_policy.html">
+  Security
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference external nav-link" href="https://github.com/intel/lpot">
+  GitHub
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparation">
+   Preparation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sigopt-introduction">
+     SigOpt introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lpot-configuration">
+     LPOT configuration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance">
+   Performance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#benefit-for-sigopt-strategy">
+     Benefit for Sigopt strategy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-comparison-of-different-strategies">
+     Performance comparison of different strategies
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sigopt-strategy">
+<h1>SigOpt Strategy<a class="headerlink" href="#sigopt-strategy" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://app.sigopt.com/">SigOpt</a> is available via online platform and can be used for model development and performance. <a class="reference external" href="https://app.sigopt.com/docs/overview/optimization">Optimization Loop</a> is the backbone of using SigOpt, we can set metrics and realize the interaction between online platform and tuning configures based on this mechanism.</p>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h2>
+<p>Before using <code class="docutils literal notranslate"><span class="pre">SigOpt</span></code> strategy, a SigOpt account is necessary.</p>
+<ul class="simple">
+<li><p>Each account has its own api token. Find your api token and then fill in the configure item <code class="docutils literal notranslate"><span class="pre">sigopt_api_token</span></code>.</p></li>
+<li><p>Create a new project and write the corresponding name into the configure item <code class="docutils literal notranslate"><span class="pre">sigopt_project_id</span></code>.</p></li>
+<li><p>Set the name for this experiment in configure item <code class="docutils literal notranslate"><span class="pre">sigopt_experiment_id</span></code>, the default is lpot-tune.</p></li>
+</ul>
+<section id="sigopt-introduction">
+<h3>SigOpt introduction<a class="headerlink" href="#sigopt-introduction" title="Permalink to this headline">¶</a></h3>
+<p>If you are using SigOpt products for the first time, please <a class="reference external" href="https://app.sigopt.com/signup">sign-up</a>, if not, please <a class="reference external" href="https://app.sigopt.com/login">login</a>. It is free to apply for an account. Although there are certain restrictions on the model parameters and the number of experiments created, it is sufficient for ordinary customers. If you want higher capacity, please contact support&#64;sigopt.com.</p>
+<p>After logging in, you can use <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">token</span> <span class="pre">api</span></code> to connect the local code and the online platform, corresponding to the configure item <code class="docutils literal notranslate"><span class="pre">sigopt_api_token</span></code>, it can be obtained <a class="reference external" href="https://app.sigopt.com/tokens/info">here</a>.</p>
+<p>SigOpt has two concepts: <a class="reference external" href="https://app.sigopt.com/projects">project</a> and <a class="reference external" href="https://app.sigopt.com/experiments">experiment</a>. Create a project before experimenting, corresponding to <code class="docutils literal notranslate"><span class="pre">sigopt_project_id</span></code> and <code class="docutils literal notranslate"><span class="pre">sigopt_experiment_name</span></code>, Multiple experiments can be created in each project. After creating experiment, run through these three simple steps, in a loop:</p>
+<ul class="simple">
+<li><p>Receive a Suggestion from SigOpt</p></li>
+<li><p>Evaluate your metric</p></li>
+<li><p>Report an Observation to SigOpt</p></li>
+</ul>
+<p>In LPOT sigopt strategy, the metrics add accuracy as constraint and optimize for latency.</p>
+</section>
+<section id="lpot-configuration">
+<h3>LPOT configuration<a class="headerlink" href="#lpot-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Compare to <code class="docutils literal notranslate"><span class="pre">Basic</span></code> strategy, <code class="docutils literal notranslate"><span class="pre">sigopt_api_token</span></code> is necessary for <code class="docutils literal notranslate"><span class="pre">SigOpt</span></code> strategy. Create the corresponding project name <code class="docutils literal notranslate"><span class="pre">sigopt_project_id</span></code> in the account before using the strategy.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tuning</span><span class="p">:</span>
+  <span class="nt">strategy</span><span class="p">:</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sigopt</span>
+    <span class="nt">sigopt_api_token</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">YOUR-ACCOUNT-API-TOKEN</span>
+    <span class="nt">sigopt_project_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PROJECT-ID</span>
+    <span class="nt">sigopt_experiment_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lpot-tune</span>
+  <span class="nt">accuracy_criterion</span><span class="p">:</span>
+    <span class="nt">relative</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+  <span class="nt">exit_policy</span><span class="p">:</span>
+    <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+  <span class="nt">random_seed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">9527</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<section id="benefit-for-sigopt-strategy">
+<h3>Benefit for Sigopt strategy<a class="headerlink" href="#benefit-for-sigopt-strategy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Metric based the SigOpt is better than self-define and easy to use. you can read details from <a class="reference external" href="https://app.sigopt.com/docs/overview/metric_constraints">here</a>.</p></li>
+<li><p>Through the token api, the results of each experiment are recorded in your account. You can use the SigOpt data analysis function to analyze the results, such as drawing a chart, calculating F1 score, etc.</p></li>
+</ul>
+</section>
+<section id="performance-comparison-of-different-strategies">
+<h3>Performance comparison of different strategies<a class="headerlink" href="#performance-comparison-of-different-strategies" title="Permalink to this headline">¶</a></h3>
+<p>MobileNet_v1 tensorflow</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>strategy</th>
+<th>FP32 baseline</th>
+<th>int8 accuracy</th>
+<th>int8 duration(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic</td>
+<td>0.8266</td>
+<td>0.8372</td>
+<td>88.2132</td>
+</tr>
+<tr>
+<td>sigopt</td>
+<td>0.8266</td>
+<td>0.8372</td>
+<td>83.7495</td>
+</tr>
+</tbody>
+</table><p>ResNet50_v1 tensorflow</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>strategy</th>
+<th>FP32 baseline</th>
+<th>int8 accuracy</th>
+<th>int8 duration(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic</td>
+<td>0.8299</td>
+<td>0.8294</td>
+<td>85.0837</td>
+</tr>
+<tr>
+<td>sigopt</td>
+<td>0.8299</td>
+<td>0.8291</td>
+<td>83.4469</td>
+</tr>
+</tbody>
+</table></section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Intel® Low Precision Optimization Tool.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
