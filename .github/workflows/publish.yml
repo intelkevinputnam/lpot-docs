@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches:
-      - master
+      - kp-theme-etc
 
 jobs:
   build:
